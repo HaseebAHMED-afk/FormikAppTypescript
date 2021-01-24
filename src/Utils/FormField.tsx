@@ -12,7 +12,6 @@ const FormField: FC<FromFieldProps> = ({name,label,type}) => {
     return (
         <div>
             <Field
-                id="outlined-full-width"
                 name={name}
                 as={TextField}
                 label={label}
@@ -21,7 +20,7 @@ const FormField: FC<FromFieldProps> = ({name,label,type}) => {
                 variant="outlined"
                 margin="normal"
                 required
-                helperText={<ErrorMessage name={name} />}
+                helperText={<ErrorMessage  name={name} render={msg => (<div style={{color:'red'}} >{msg}</div>)} />}
             />
         </div>
     )

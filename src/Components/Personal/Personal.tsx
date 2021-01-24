@@ -1,4 +1,4 @@
-import React,{FC} from 'react'
+import React from 'react'
 import * as Yup from 'yup'
 import {Formik , Form } from 'formik'
 import FormField from '../../utils/FormField'
@@ -15,36 +15,39 @@ interface PersonalFormValues{
     phone?: string,
 }
 
-const personaInitialValues:PersonalFormValues ={
-    firstName: '',
-    lastName: '',
-    address:'',
-    city: '',
-    province:'',
-    country:'',
-    phone:''
-}
 
-const personalValidationSchema = Yup.object({
-    firstName: Yup.string().required('Required'),
-    lastName: Yup.string().required('Required'),
-    address:Yup.string().required('Required'),
-    city: Yup.string().required('Required'),
-    province: Yup.string().required('Required'),
-    country: Yup.string().required('Required'),
-    phone: Yup.string().required('Required')
-})
+const Personal = ({submit,prevValues,setFormValues} : any) => {
 
-const personalOnSubmit=(values : PersonalFormValues) : void=>{
-    alert('')
-}
-
-const Personal:FC<PersonalFormValues> = () => {
-    let index=1
+    // Commented out just for understanding
+    // const personaInitialValues:PersonalFormValues ={
+    //     firstName: '',
+    //     lastName: '',
+    //     address:'',
+    //     city: '',
+    //     province:'',
+    //     country:'',
+    //     phone:''
+    // }
+    
+    const personalValidationSchema = Yup.object({
+        firstName: Yup.string().required('Required'),
+        lastName: Yup.string().required('Required'),
+        address:Yup.string().required('Required'),
+        city: Yup.string().required('Required'),
+        province: Yup.string().required('Required'),
+        country: Yup.string().required('Required'),
+        phone: Yup.string().required('Required')
+    })
+    
+    const personalOnSubmit=(values : PersonalFormValues) : void=>{
+        submit(2)
+        setFormValues({...values,...prevValues})
+    }
+    
     return (
         <div>
             <Formik
-                initialValues={personaInitialValues}
+                initialValues={prevValues}
                 validationSchema={personalValidationSchema}
                 onSubmit={personalOnSubmit}
             >
@@ -87,8 +90,8 @@ const Personal:FC<PersonalFormValues> = () => {
                                 type='text'
                             />
                             <div className="buttonGroup">
-                        <Button disabled={index===0 ? true : false} variant="contained" color="secondary"  >Back</Button>
-                        <Button variant="contained" color="primary"  >Next</Button>
+                        <Button  variant="contained" color="secondary" onClick={() => submit(0)} >Back</Button>
+                        <Button variant="contained" color="primary" type='submit'  >Next</Button>
                     </div>
                         </Form>
                     )
