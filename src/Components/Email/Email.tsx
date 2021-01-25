@@ -45,7 +45,7 @@ const Email = ({submit,prevValues,setFormValues} : any) => {
     
 >
     {
-        ({dirty,isValid}) => {
+        (props) => {
             return (
                 <Form>
                     <FormField name="userName" label="User Name" type="text" />
