@@ -2,7 +2,7 @@ import React from 'react'
 import * as Yup from 'yup'
 import { Formik , Form } from 'formik'
 import Button from '@material-ui/core/Button'
-import FormField from '../../utils/FormField'
+import FormField from '../Utils/FormField'
 
 interface ProfessionalFormProps{
     interest?: string,
