@@ -14,7 +14,7 @@ jobs:
     steps:
       - run: 
           name: Install Dependencies
-          command: npm Install
+          command: npm install
       - run:
           name: Build react app
           command: npm run build
