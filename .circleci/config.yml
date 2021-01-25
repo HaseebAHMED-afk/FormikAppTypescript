@@ -4,7 +4,7 @@ workflows:
   version: 2
   build:
     jobs:
-      -build
+      - build
 
 jobs:
   build:
@@ -23,6 +23,6 @@ jobs:
           command: npm install -g surge
       - run:
           name: Deoloy to Surge
-          run: surge ./build https://multistepformbyhaseebahmed.surge.sh --token ${SURGE_SECRET}
+          command: surge ./build https://multistepformbyhaseebahmed.surge.sh --token ${SURGE_SECRET}
 
 
