@@ -8,13 +8,17 @@ workflows:
 
 jobs:
   build:
+    working-directory: ./
     docker: 
       - image: circleci/node:10.16.3
     
     steps:
+      - checkout
       - run: 
           name: Install Dependencies
           command: npm install
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package-lock.json" }}
       - run:
           name: Build react app
           command: npm run build
