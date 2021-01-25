@@ -10,4 +10,19 @@ jobs:
   build:
     docker: 
       - image: circleci/node:10.16.3
+    
+    steps:
+      - run: 
+          name: Install Dependencies
+          command: npm Install
+      - run:
+          name: Build react app
+          command: npm run build
+      - run: 
+          name: Install Surge
+          command: npm install -g surge
+      - run:
+          name: Deoloy to Surge
+          run: surge ./build https://multistepformbyhaseebahmed.surge.sh --token ${SURGE_SECRET}
+
 
