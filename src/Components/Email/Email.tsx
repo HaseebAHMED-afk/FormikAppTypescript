@@ -15,12 +15,6 @@ interface EmailForm {
 
 const Email = ({submit,prevValues,setFormValues} : any) => {
 
-    //Commented out just for understanding
-    // const emailValues:EmailForm = {
-    //     userName: "",
-    //     email: "",
-    //     password: "",
-    //   };
       
       const emailValidationSchema = Yup.object({
         userName: Yup.string()
